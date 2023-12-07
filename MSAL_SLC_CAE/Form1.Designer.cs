@@ -36,7 +36,7 @@
             btnExit = new MaterialSkin.Controls.MaterialRaisedButton();
             materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             testOption2 = new MaterialSkin.Controls.MaterialRadioButton();
-            testOption3 = new MaterialSkin.Controls.MaterialRadioButton();
+            MsiAsFicFlow = new MaterialSkin.Controls.MaterialRadioButton();
             vanillaMSI = new MaterialSkin.Controls.MaterialRadioButton();
             pictureBox1 = new PictureBox();
             panel3 = new Panel();
@@ -56,6 +56,7 @@
             txtResource = new MaterialSkin.Controls.MaterialSingleLineTextField();
             materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
             txtClientId = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            fetchAppToken = new MaterialSkin.Controls.MaterialRaisedButton();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -90,12 +91,13 @@
             // panel2
             // 
             panel2.BackColor = Color.PaleGoldenrod;
+            panel2.Controls.Add(fetchAppToken);
             panel2.Controls.Add(btnCallResource);
             panel2.Controls.Add(btnFetchToken);
             panel2.Controls.Add(btnExit);
             panel2.Controls.Add(materialLabel1);
             panel2.Controls.Add(testOption2);
-            panel2.Controls.Add(testOption3);
+            panel2.Controls.Add(MsiAsFicFlow);
             panel2.Controls.Add(vanillaMSI);
             panel2.Controls.Add(pictureBox1);
             panel2.Controls.Add(panel3);
@@ -108,7 +110,7 @@
             // btnCallResource
             // 
             btnCallResource.Depth = 0;
-            btnCallResource.Location = new Point(12, 462);
+            btnCallResource.Location = new Point(12, 512);
             btnCallResource.MouseState = MaterialSkin.MouseState.HOVER;
             btnCallResource.Name = "btnCallResource";
             btnCallResource.Primary = true;
@@ -116,17 +118,19 @@
             btnCallResource.TabIndex = 9;
             btnCallResource.Text = "CALL RESOURCE";
             btnCallResource.UseVisualStyleBackColor = true;
+            btnCallResource.Click += FetchResource;
+
             // 
             // btnFetchToken
             // 
             btnFetchToken.Depth = 0;
-            btnFetchToken.Location = new Point(12, 361);
+            btnFetchToken.Location = new Point(12, 353);
             btnFetchToken.MouseState = MaterialSkin.MouseState.HOVER;
             btnFetchToken.Name = "btnFetchToken";
             btnFetchToken.Primary = true;
             btnFetchToken.Size = new Size(200, 74);
             btnFetchToken.TabIndex = 8;
-            btnFetchToken.Text = "Fetch Token";
+            btnFetchToken.Text = "Fetch MSI Token";
             btnFetchToken.UseVisualStyleBackColor = true;
             btnFetchToken.Click += btnFetchToken_Click;
             // 
@@ -134,7 +138,7 @@
             // 
             btnExit.Depth = 0;
             btnExit.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnExit.Location = new Point(12, 561);
+            btnExit.Location = new Point(12, 592);
             btnExit.MouseState = MaterialSkin.MouseState.HOVER;
             btnExit.Name = "btnExit";
             btnExit.Primary = true;
@@ -174,22 +178,22 @@
             testOption2.Text = "Plain MSI";
             testOption2.UseVisualStyleBackColor = true;
             // 
-            // testOption3
+            // MsiAsFicFlow
             // 
-            testOption3.AutoSize = true;
-            testOption3.Depth = 0;
-            testOption3.Font = new Font("Roboto", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            testOption3.Location = new Point(21, 235);
-            testOption3.Margin = new Padding(0);
-            testOption3.MouseLocation = new Point(-1, -1);
-            testOption3.MouseState = MaterialSkin.MouseState.HOVER;
-            testOption3.Name = "testOption3";
-            testOption3.Ripple = true;
-            testOption3.Size = new Size(106, 30);
-            testOption3.TabIndex = 4;
-            testOption3.TabStop = true;
-            testOption3.Text = "FIC MSI CAE";
-            testOption3.UseVisualStyleBackColor = true;
+            MsiAsFicFlow.AutoSize = true;
+            MsiAsFicFlow.Depth = 0;
+            MsiAsFicFlow.Font = new Font("Roboto", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            MsiAsFicFlow.Location = new Point(21, 235);
+            MsiAsFicFlow.Margin = new Padding(0);
+            MsiAsFicFlow.MouseLocation = new Point(-1, -1);
+            MsiAsFicFlow.MouseState = MaterialSkin.MouseState.HOVER;
+            MsiAsFicFlow.Name = "MsiAsFicFlow";
+            MsiAsFicFlow.Ripple = true;
+            MsiAsFicFlow.Size = new Size(106, 30);
+            MsiAsFicFlow.TabIndex = 4;
+            MsiAsFicFlow.TabStop = true;
+            MsiAsFicFlow.Text = "FIC MSI CAE";
+            MsiAsFicFlow.UseVisualStyleBackColor = true;
             // 
             // vanillaMSI
             // 
@@ -368,12 +372,12 @@
             materialLabel6.AutoSize = true;
             materialLabel6.BackColor = Color.Transparent;
             materialLabel6.Depth = 0;
-            materialLabel6.Font = new Font("Microsoft Sans Serif", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            materialLabel6.Font = new Font("Roboto", 11F, FontStyle.Regular, GraphicsUnit.Point);
             materialLabel6.ForeColor = Color.FromArgb(222, 0, 0, 0);
             materialLabel6.Location = new Point(11, 152);
             materialLabel6.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabel6.Name = "materialLabel6";
-            materialLabel6.Size = new Size(78, 18);
+            materialLabel6.Size = new Size(79, 19);
             materialLabel6.TabIndex = 12;
             materialLabel6.Text = "FIC App ID";
             // 
@@ -456,6 +460,19 @@
             txtClientId.TabIndex = 7;
             txtClientId.UseSystemPasswordChar = false;
             // 
+            // fetchAppToken
+            // 
+            fetchAppToken.Depth = 0;
+            fetchAppToken.Location = new Point(12, 432);
+            fetchAppToken.MouseState = MaterialSkin.MouseState.HOVER;
+            fetchAppToken.Name = "fetchAppToken";
+            fetchAppToken.Primary = true;
+            fetchAppToken.Size = new Size(200, 74);
+            fetchAppToken.TabIndex = 11;
+            fetchAppToken.Text = "Fetch App Token";
+            fetchAppToken.UseVisualStyleBackColor = true;
+            fetchAppToken.Click += FetchAppTokenClick;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -494,7 +511,7 @@
         private MaterialSkin.Controls.MaterialRaisedButton btnExit;
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
         private MaterialSkin.Controls.MaterialRadioButton testOption2;
-        private MaterialSkin.Controls.MaterialRadioButton testOption3;
+        private MaterialSkin.Controls.MaterialRadioButton MsiAsFicFlow;
         private MaterialSkin.Controls.MaterialRadioButton vanillaMSI;
         private MaterialSkin.Controls.MaterialSingleLineTextField txtTenantId;
         private MaterialSkin.Controls.MaterialLabel materialLabel3;
@@ -513,5 +530,6 @@
         private MaterialSkin.Controls.MaterialLabel materialLabel4;
         private MaterialSkin.Controls.MaterialSingleLineTextField txtClientId;
         private TextBox msalLogs;
+        private MaterialSkin.Controls.MaterialRaisedButton fetchAppToken;
     }
 }
